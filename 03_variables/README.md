@@ -81,3 +81,53 @@ var a = 1, b = 2, c = 3;	// 여러 개의 변수에 대해 초기값 설정을 �
   - 이스케이프 시퀀스: \\
     - `\uXXXX`: 네 자릿수 16진수로 지정된 유니코드 문자
     - `\u{XXXXXX}`: 16진수 코드 포인트로 지정된 유니코드 문자(ES6)
+
+- 논리값
+  - `true`, `false`
+- 특수한 값
+  - `undefined`: 정의되지 않는 값
+  - `null`: 아무것도 없는 값
+
+
+
+## 3.3 ECMAScript 6부터 추가된 데이터 타입
+
+- Symbol
+
+  - 자기 자신을 제외한 그 어떤 값과도 다른 유일무이한 값
+
+    ```javascript
+    var NONE = 0;
+    var black = -1;
+    var white = 1;
+    ```
+
+    ```javascript
+    var NONE = Symbol("none");
+    var BLACK = Symbol("black");
+    var WHITE = Symbol("white");
+    ```
+
+    위의 코드는 오셀로 게임을 만드는 경우를 가정하였습니다. 변수 cell을 확인할 때 가독성이 좋게 바꿀 수 있습니다.
+
+  - Symbol과 문자열 연결하기
+
+    - `Symbol.for()` 을 활용하면 문자열과 연결된 심벌을 생성할 수 있습니다.
+    - [Symbol.for() 예시](./02_symbol_for.js)
+
+- 템플릿 리터럴
+
+  - 역따옴표(``)로 묶은 문자열
+
+    ```javascript
+    var t = `Hello
+    I'm javascript`
+    ```
+
+  - 보간 표현식
+
+    플레이스 홀더인 `${}`을 사용하여 문자열 안에 변수나 표현식의 결과값을 삽입할 수 있음
+
+    [보간 표현식 예시](./03_template.js)
+
+    
