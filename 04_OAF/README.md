@@ -117,3 +117,103 @@
   - 지역 변수
     - 함수 안에서 선언된 변수와 함수 인자로 유효 범위가 선언된 함수 내부
 
+- `let`과 `const`
+
+  - `let`은 변수를 선언하고, `const`는 한 번만 할당할 수 있는 상수를 선언
+
+  - let 선언자
+
+    - let의 유효범위
+
+      ```javascript
+      let x = "outer x";
+      {
+          let x = "inner x";
+          let y = "inner y";
+          console.log(x);     // inner x
+          console.log(y);     // inner y
+      }
+      console.log(x)          // outer x
+      console.log(y)          // reference error: not defined
+      ```
+
+    - __var 문과 달리 선언한 변수를 끌어올리지 않음__
+
+      ```javascript
+      console.log(x);			// reference error
+      let x = 4;
+      ```
+
+  - const 선언자
+
+    - 한 번만 할당할 수 있는 변수(상수)를 선언
+
+    - const 문으로 선언한 변수에 다시 대입을 시도하면 타입 오류가 발생
+
+      ```javascript
+      const c = 2;
+      c = 5;          // type error
+      ```
+
+    - 상수 값이 객체이거나 배열일 경우에는 프로퍼티 또는 프로퍼티 값을 수정할 수 있습니다.
+
+      ```javascript
+      const origin = {
+          x: 1,
+          y: 4
+      };
+      console.log(origin)     // { x: 1, y: 4 }
+      origin.x = 3;
+      console.log(origin)     // { x: 3, y: 4 }
+      ```
+
+- 함수 리터럴로 함수 정의하기
+
+  - 함수 리터럴은 이름이 없는 함수로, __익명함수__ 또는 __무명함수__ 라고 부릅니다. 
+
+  - 함수 리터럴을 사용할 때는 끝에 반드시 세미콜론(;)을 붙여야 한다.
+
+  - 함수 선언문과의 차이: 함수 리터럴로 정의한 함수는 끌어올리지 않음
+
+    ```javascript
+    console.log(square(3));     // type error
+    var square = function(x) { return x * x; };
+    ```
+
+  - 함수 안에서만 유효한 이름은 함수 바깥에서는 호출할 수 없음
+
+    ```javascript
+    var square = function sq(x) { return x * x; };	// sq를 호출할 수 없음
+    ```
+
+- 객체의 메서드
+
+  - 함수 객체 안에 적힌 this는 그 함수를 메서드로 가지고 있는 객체를 가리킵니다.
+
+    ```javascript
+    var circle = {
+        center: {x: 1.0, y: 2.0},
+        radius: 2.5,
+        area: function () {
+            return Math.PI * this.radius * this.radius;
+        }
+    };
+    console.log(circle.area())      // 19.634954084936208
+    ```
+
+  - 메서드 또한 프로퍼티의 일종이므로 나중에 추가할 수 있습니다.
+
+    ```javascript
+    circle.translate = function(a, b) {
+        this.center.x = this.center.x + a;
+        this.center.y = this.center.y + b;
+    };
+    console.log(circle.center);     // { x: 1, y: 2 }
+    circle.translate(3, 4);
+    console.log(circle.center);     // { x: 4, y: 6 }
+    ```
+
+  - 객체를 기본 부품으로 삼아 프로글매을 만들어가는 기법을 __객체 지향 프로그래밍__이라고 부릅니다. 
+
+  
+
