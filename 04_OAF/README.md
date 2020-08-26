@@ -217,3 +217,27 @@
 
   
 
+## 4.3 객체 생성자
+
+객체를 여러 개 생성하는 수단으로 클래스(class)를 사용합니다. 생성자를 사용하면 이름이 같은 메서드와 프로퍼티를 가진 객체 여러 개를 효율적으로 생성할 수 있습니다. 자바스크립트에는 클래스가 없기 때문에 생성자라고 하는 함수로 객체를 생성할 수 있습니다. 생성자로 객체를 생성할 때는 `new` 연산자를 사용합니다.
+
+```javascript
+function Card(suit, rank) {
+    this.suit = suit;
+    this.rank = rank;
+};
+
+var card_a = new Card("하트", "A");
+var card_b = new Card("다이아", "4");
+
+console.log(card_a);        // Card { suit: '하트', rank: 'A' }
+console.log(card_b);        // Card { suit: '다이아', rank: '4' }
+```
+
+- 메서드를 가진 객체를 생성하는 생성자
+
+  ```javascript
+  
+  ```
+
+  
