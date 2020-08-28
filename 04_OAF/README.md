@@ -237,7 +237,51 @@ console.log(card_b);        // Card { suit: '다이아', rank: '4' }
 - 메서드를 가진 객체를 생성하는 생성자
 
   ```javascript
+  function Circle(center, radius) {
+      this.center = center;
+    this.radius = radius;
+      this.area = function() {
+          return this.radius * this.radius * Math.PI;
+      };
+  };
   
+  var p = {x: 0, y: 0};
+  var c = new Circle(p, 4)
+  console.log(c.area())       // 50.26548245743669
+  ```
+  
+
+
+
+## 4.4 배열
+
+배열 리터럴은 쉼표로 구분한 값을 대괄호(`[]`)로 묶어서 표현합니다. 변수의 요소에는 변수와 마찬가지로 모든 타입의 값이 올 수 있습니다. 
+
+```javascript
+var arr3 = [3.14, "pi", true, {x: 1, y:2}, [1, 2, 3, 4]];
+console.log(arr3)           // [ 3.14, 'pi', true, { x: 1, y: 2 }, [ 1, 2, 3, 4 ] ]
+```
+
+- `length` 프로퍼티
+
+  배열의 길이를 가리키며 __배열 요소의 최대 인덱스값 + 1__ 이 담겨 있습니다. length 프로퍼티에 0보다 큰 정수 값을 대입할 경우 배열의 길이가 줄어듭니다. 
+
+  ```javascript
+  var arr4 = [1, 2, 3, 4];
+  console.log(arr4)           // [ 1, 2, 3, 4 ]       
+  arr4.length = 2;
+  console.log(arr4)           // [ 1, 2 ]
+  ```
+
+- Array 생성자
+
+  배열은 생성자로도 생성할 수 있습니다. 
+
+  ```javascript
+  var arr5 = new Array(2, 4, 5, 6);
+  var arr6 = new Array();
+  var arr7 = new Array("hi", 5, {x:1, y:5}, [3, 5]);
   ```
 
   
+
