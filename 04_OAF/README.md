@@ -283,5 +283,42 @@ console.log(arr3)           // [ 3.14, 'pi', true, { x: 1, y: 2 }, [ 1, 2, 3, 4 
   var arr7 = new Array("hi", 5, {x:1, y:5}, [3, 5]);
   ```
 
+  Array 생성자의 인수가 한 개이고, 그 값이 양의 정수이면 인수가 배열의 길이를 뜻하게 되어 그 길이만큼 배열을 생성합니다. 
+
+  ```javascript
+  var arr8 = new Array(5);    // 5
+  console.log(arr8.length);
+  console.log(arr8);          // [ <5 empty items> ]
+  ```
+
+- 배열의 요소 참조
+
+  대괄호([]) 연산자를 사용하여 읽거나 쓸 수 있습니다. 자바스크립트의 배열은 Array 객체이며 배열의 기능을 흉내내 것입니다. 배열의 인덱스를 문자열로 변환해서 프로퍼티로 이용하기 때문에 배열의 요소 번호로 숫자 값 대신 문자열을 사용할 수 있습니다. __없는 요소를 읽으려고 할 경우 undefined가 반환__됩니다.
+
+  ```javascript
+  var arr9 = ["A", "B", "C", "D"]
+  console.log(arr9[2]);       // C
+  console.log(arr9["2"]);     // C
+  console.log(arr9[4]);       // undefined
+  
+  ```
+
+- 배열 요소의 추가와 삭제
+
+  없는 배열 요소에 값을 대입하면 새로운 요소가 추가됩니다. 비어있는 요소가 있을 경우 undefined로 추가됩니다. 
+
+  ```javascript
+  var arr10 = ["a", "b", "c"];
+  arr10[5] = "f";
+  console.log(arr10);         // [ 'a', 'b', 'c', 'd', <1 empty item>, 'f' ]
+  ```
+
+  `push` 메서드를 사용할 경우 요소를 배열의 끝에 추가할 수 있습니다.
+
+  ```javascript
+  arr10.push("g");
+  console.log(arr10);         // [ 'a', 'b', 'c', <2 empty items>, 'f', 'g' ]
+  ```
+
   
 
