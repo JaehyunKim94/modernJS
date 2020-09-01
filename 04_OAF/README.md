@@ -320,5 +320,36 @@ console.log(arr3)           // [ 3.14, 'pi', true, { x: 1, y: 2 }, [ 1, 2, 3, 4 
   console.log(arr10);         // [ 'a', 'b', 'c', <2 empty items>, 'f', 'g' ]
   ```
 
-  
+  `delete` 연산자를 사용하면 특정 배열 요소를 삭제할 수 있습니다. 
+
+  ```javascript
+  delete arr10[1];            // delete 연산자
+  console.log(arr10);         // [ 'a', <1 empty item>, 'c', <2 empty items>, 'f', 'g' ]
+  ```
+
+  - 희소 배열
+
+    배열 요소를 추가하거나 제거하면 인덱스가 0부터 시작되지 않는 배열이 만들어지는데 이러한 배열을 __희소배열__이라고 합니다. `hasOwnProperty` 메서드를 활용하여 해당 객체의 프로퍼티가 있는지 확인할 수 있습니다. 
+
+    ```javascript
+    var arr11 = ["a", "b", "c", "d"];
+    arr11[6] = "z";
+    console.log(arr11);         // [ 'a', 'b', 'c', 'd', <2 empty items>, 'z' ]
+    console.log(arr11.length);  // 7
+    for (var i in arr11) console.log(i);    // 0, 1, 2, 3, 6
+    console.log(arr11.hasOwnProperty("5")); // false
+    console.log(arr11.hasOwnProperty("6")); // true
+    ```
+
+    arr11[4]와 arr11[5]의 경우 undefined로 표시되지만, 실제로는 없는 요소입니다. 객체로 생각할 경우 위의 arr11은 다음과 같이 표시할 수 있습니다.
+
+    | Key  | Value |
+    | ---- | ----- |
+    | 0    | "a"   |
+    | 1    | "b"   |
+    | 2    | "c"   |
+    | 3    | "d"   |
+    | 6    | "z"   |
+
+    
 

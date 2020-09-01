@@ -41,4 +41,14 @@ console.log(arr10);         // [ 'a', 'b', 'c', <2 empty items>, 'f' ]
 console.log(arr10[4]);      // undefined
 arr10.push("g");            // push 메서드
 console.log(arr10);         // [ 'a', 'b', 'c', <2 empty items>, 'f', 'g' ]
+delete arr10[1];            // delete 연산자
+console.log(arr10);         // [ 'a', <1 empty item>, 'c', <2 empty items>, 'f', 'g' ]
 
+// 희소배열
+var arr11 = ["a", "b", "c", "d"];
+arr11[6] = "z";
+console.log(arr11);         // [ 'a', 'b', 'c', 'd', <2 empty items>, 'z' ]
+console.log(arr11.length);  // 7
+for (var i in arr11) console.log(i);    // 0, 1, 2, 3, 6
+console.log(arr11.hasOwnProperty("5")); // false
+console.log(arr11.hasOwnProperty("6")); // true
