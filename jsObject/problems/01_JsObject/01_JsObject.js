@@ -19,7 +19,7 @@ var myObj = new Object();
 myObj["0"] = "f";
 myObj["1"] = "o";
 myObj["2"] = "o";
-console.log(myObj);     //출력: { '0': 'f', '1': 'o', '2': 'o' }
+console.log(myObj); //출력: { '0': 'f', '1': 'o', '2': 'o' }
 
-var myString = new String("foo");   // 문자열 객체의 인스턴스를 만들어 myString 변수에 저장
-console.log(myString);  // 출력: [String: 'foo']
+var myString = new String("foo"); // 문자열 객체의 인스턴스를 만들어 myString 변수에 저장
+console.log(myString); // 출력: [String: 'foo']

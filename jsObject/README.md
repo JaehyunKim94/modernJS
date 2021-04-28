@@ -10,7 +10,6 @@
 
 ```javascript
 /* 01_JsObject.js */
-
 // Object 객체 생성
 var obj = new Object();
 
@@ -44,7 +43,6 @@ console.log(myString);  // 출력: [String: 'foo']
 
 ```javascript
 /* 01_JsObjectConstructor.js */
-
 var Person = function Person(living, age, gender) {
   this.living = living;
   this.age = age;
@@ -71,14 +69,14 @@ console.log(cody.constructor); // 출력: [Function: Person]
 ##### `new` 연산자를 사용한 생성자 인스턴스 생성
 
 - 생성자 함수와 `new` 연산자를 함께 사용하면 객체의 인스턴스를 얻을 수 있다. 
-- [예시 코드](/problems/01_JsConstructorLiteral.js)
+- [예시 코드](/problems/01_JsObject/01_JsConstructorLiteral.js)
 
 
 
 ##### 리터럴을 사용한 값 생성하기
 
 - 리터럴을 사용하면 `new` 연산자를 사용한 것과 동일한 효과를 볼 수 있다.
-- [예시 코드](/problems/01_JsConstructorLiteral.js)
+- [예시 코드](/problems/01_JsObject/01_JsConstructorLiteral.js)
 - 문자열, 숫자, 불리언 자료형에 대해 리터럴값을 사용하면 이 값을 객체처럼 다루기 전까지는 리터럴에 해당하는 복합객체가 만들어지지 않는다. (메소드를 사용하기 전까지는 원시 자료형을 다루는 셈)
   - 메소드/속성에 접근하면 자바스크립트는 먼저 리터럴값에 해당하는 래퍼(wrapper) 객체를 만들고 이를 통해 메소드나 속성에 접근한다. 이후, 래퍼 객체를 제거하고, 다시 값을 리터럴형으로 되돌린다.
 
@@ -97,8 +95,7 @@ console.log(cody.constructor); // 출력: [Function: Person]
   - **원시값은 액면가 그대로 저장되고, 관리된다.** 
 
     ```javascript
-    /* 01_PrimitiveSaveCopy */
-    
+    /* 01_PrimitiveSaveCopy.js */
     var myString = "foo";   // 문자열 객체 생성
     var myStringCopy = myString;    // 값 복사
     var myString = null;    // 값 수정
@@ -108,8 +105,7 @@ console.log(cody.constructor); // 출력: [Function: Person]
   - 원시값은 값 자체를 비교한다
 
     ```javascript
-    /* 01_PrimitiveCompare */
-    
+    /* 01_PrimitiveCompare.js */
     var price1 = 10;
     var price2 = 10;
     var price3 = new Number('10');  // 복합객체
@@ -127,8 +123,7 @@ console.log(cody.constructor); // 출력: [Function: Person]
   - 문자열, 숫자, 불리언 원시갑을 객체처럼 사용하면 객체처럼 동작한다.
 
     ```javascript
-    /* 01_PrimitiveMethod */
-    
+    /* 01_PrimitiveMethod.js */
     var primitiveString1 = "foo";
     var primitiveString2 = String("foo");
     var primitiveNumber1 = 10;
@@ -151,7 +146,6 @@ console.log(cody.constructor); // 출력: [Function: Person]
 
     ```javascript
     /* 01_ComplexObject.js */
-    
     var myObject = {};
     var copyMyObject = myObject;
     
@@ -167,7 +161,6 @@ console.log(cody.constructor); // 출력: [Function: Person]
 
     ```javascript
     /* 01_ComplexObject.js */
-    
     var objectFoo = {same: "same"};
     var objectBar = {same: "same"};
     var objectCopy = objectFoo;
@@ -181,7 +174,6 @@ console.log(cody.constructor); // 출력: [Function: Person]
 
     ```javascript
     /* 01_ComplexObject.js */
-    
     var objectFoo = {same: "same"};
     var objectCopy = objectFoo;
     var objectCopy2 = objectCopy;
@@ -193,7 +185,6 @@ console.log(cody.constructor); // 출력: [Function: Person]
 
       ```javascript
       /* 01_ObjectModify.js */
-      
       String.augmentedProperties = [];
       
       if(!String.prototype.trimIT) {
@@ -213,7 +204,7 @@ console.log(cody.constructor); // 출력: [Function: Person]
     인스턴스를 만든 생성자 함수를 알 수 없는 경우, 이 속성을 사용하면 생성자 함수를 찾을 수 있다.
 
     ```javascript
-    // 01_ConstructorProperty.js
+    /* 01_ConstructorProperty.js */
     var foo = {};
     console.log(foo.constructor === Object);    // true
     console.log(foo.constructor);   // [Function: Object]
@@ -224,6 +215,7 @@ console.log(cody.constructor); // 출력: [Function: Person]
     주어진 객체가 특정 생성자 함수의 인스턴스인지 아닌지 확인할 수 있음 (`true` or `false` 리턴)
 
     ```javascript
+    /* 01_InstanceOf.js */
     var CustomConstructor = function() {this.foo = "bar"};  // 사용자 정의 객체 생성자
     var instanceOfCustomObject = new CustomConstructor();   // 인스턴스 생성
     
@@ -231,23 +223,305 @@ console.log(cody.constructor); // 출력: [Function: Person]
     console.log(new Array("foo") instanceof Array); // 네이티브 객체에서도 작동
     ```
 
+  - 생성자를 통해 만든 인스턴스에 인스턴스 속성 추가하기
+
+    ```javascript
+    /* InstanceAddProperty.js */
+    var myArray1 = [];
+    var myArray2 = new Array();
+    myArray1.prop = "test";
+    myArray2.prop = "test";
     
+    console.log(myArray1.prop, myArray2.prop);  // test test
+    
+    // 원시/리터럴 값에는 인스턴스 속성을 설정할 수 없다.
+    var myString = "string";
+    var myBoolean = true;
+    var myNumber = 10;
+    
+    myString.prop = true;
+    myBoolean.prop = true;
+    myNumber.prop = true;
+    
+    console.log(myString.prop, myBoolean.prop, myNumber.prop);  // undefined undefined undefined
+    ```
+
+**자바스크립트 객체와 Object() 객체의 의미
+
+- 자바스크립트 객체: 자바스크립트의 모든 객체
+- Object() 객체: 객체의 한 종류
 
 
 
 ## 2. 객체와 속성 다루기
 
- 
+- 자바스크립트는 수정 가능하다. 네이티브 객체이든 사용자가 정의한 객체이든 객체의 언제든 객체의 속성을 조작할 수 있다.
+- 객체의 속성을 가져오고, 설정하고, 객신할 때는 점 표기법(dot notation) 또는 각괄호 표기법(bracket notation)을 사용한다.
+  - 점 표기법: ObjectName.property
+    - 가장 널리 사용되는 방법으로, 필요한 경우를 제외하고는 점 표기법이 사용된다.
+  - 각괄호 표기법: ObjectName['property']
+    - 각괄호 표기법을 사용하면 자바스크립트 식별자로 사용할 수 없는 속성 이름도 사용할 수 있다. 
+- 객체 속성 삭제하기 `delete`
+  - 속성을 제거하는 유일한 방법으로, 프로토타입 체인에 있는 속성을 제거하지는 않는다.
+
+```javascript
+/* 02_ObjectProperty.js */
+var cody = {
+  class: "foo",
+  123: "zero",
+};
+cody.age = 28; // 점 표기법
+cody["male"] = true; // 각괄호 표기법
+var string1 = "ag";
+var string2 = "e";
+console.log(cody[string1 + string2]);
+
+console.log(cody["class"], cody["123"]);
+// console.log(cody.class, cody.123);   // 에러 발생 (class는 된다...)
+
+delete cody["123"]; // 객체 속성 삭제
+console.log("123" in cody); // false
+```
+
+- 객체 속성의 참조를 찾는 법
+
+  - 접근한 속성이 객체에 포함되어 있지 않으면 자바스크립트는 항상 프로토타입 체인을 이용해 속성과 메소드를 찾는다. 
+
+    ```javascript
+    /* 02_PropertyUndefined */
+    // myArray는 배열 객체이다.
+    var myArray = ["foo", "bar"];
+    // 참조 순서: myArray -> Array.prototype -> Object.prototype
+    console.log(myArray.foo); // undefined
+    // join()은 Array.prototype.join으로 정의되어 있다.
+    console.log(myArray.join()); // foo, bar
+    // toLocaleString()은 Object.prototype.toLocaleString으로 정의되어있다.
+    console.log(myArray.toLocaleString()); // foo, bar
+    ```
+
+    - `join()` 메소드는 myArray의 것이 아니지만 myArray의 속성인 것 처럼 접속할 수 있다. >> **프로토타입 체인의 동작**
+    - prototype 속성은 모두 객체이며 프로토타입 체인의 종점은 Object.prototype이다. 
+
+- 객체의 속성 확인하기: `hasOwnProperty`& `in`
+
+  - `in` 연산자를 사용하면 객체의 속성을 확인할 때 프로토타입 체인에서 상속받은 속성까지 포함해서 확인한다.
+  - `hasOwnProperty` 메소드를 사용하면 객체의 속성이 프로토타입 체인에서 상속받지 않은 해당 객체의 고유한 것인지 확인한다.
+
+  ```javascript
+  /* 02_hasOwnProperty.js */
+  var myObject = {foo: "bar"};
+  
+  console.log(myObject.hasOwnProperty("foo"));    // true
+  console.log(myObject.hasOwnProperty("toString"));   // false
+  console.log("toString" in myObject);    // true (프로토타입 체인에서 상속받은 속성까지 확인)
+  ```
+
+- 객체의 속성 탐색하기: `for in` 루프
+
+  - 프로토타입 체인에서 상속받은 속성까지 포함해서 탐색
+
+  ```javascript
+  var cody = {
+    age: 23,
+    gender: "male",
+  };
+  
+  Object.prototype.car = true;
+  
+  for (var key in cody) {
+    // 없을 경우 car도 출력
+    if (cody.hasOwnProperty(key)) {
+      console.log(key);
+    }
+  }
+  ```
+
+- 호스트 객체 vs 네이티브 객체
+
+  - 호스트 객체: ECMAScript 명세에서 정의되지 않았으나 코드를 실행할 때는 사용될 수 있는 객체를 뜻한다. 예를들어, 웹 브라우저 환경에서는 window 객체와 window 객체가 포함한 모든 객체를 호스트 객체로 볼 수 있다.
+  - 웹 브라우저와 관련있는 가장 유명한 호스트 객체는 DOM이다, 
+
+
 
 ## 3. Object()
 
+내장 Object() 생성자 함수를 사용하면 범용 빈 객체를 바로 만들 수 있다.
 
+- Object()의 속성과 메소드
+  - 속성 (예: `Object.prototype`)
+    - `prototype`
+
+- Object() 객체 인스턴스의 속성과 메소드
+
+  - 인스턴스 속성(예: `var myObj = {}; myObj.constructor`)
+    - `constructor`
+  - 인스턴스 메소드(예: `var myObj = {}; myObj.toString();`)
+    - `hasOwnProperty()`
+    - `isPrototypeOf()`
+    - `propertyIsEnumerable()`
+    - `toLocaleString()`
+    - `toString()`
+    - `valueOf()`
+
+- Object() 객체 생성
+
+  - 객체 리터럴을 사용한 Object 객체 생성
+
+    ```javascript
+    /* 03_ObjectPropertyMethod.js */
+    var obj = {
+      living: true,
+      age: 28,
+      gender: "male",
+    };
+    ```
+
+- **모든 객체는 Object.prototype을 상속받는다**
+
+  ```javascript
+  /* 03_ObjectPropertyMethod.js */
+  Object.prototype.test = "test";
+  var myStr = "string";
+  console.log(myStr.test);
+  ```
+
+  
 
 ## 4. Function()
 
+함수는 괄호()를 사용해 호출할 코드 문장들을 모아두는 곳이다. 
 
+```javascript
+/* 04_Functions.js */
+var addNumA = new Function("num1", "num2", "return num1 + num2");
+console.log(addNumA(2, 4));
+// 리터럴 방식
+var addNumB = function (num1, num2) {
+  return num1 + num2;
+};
+console.log(addNumB(3, 3));
+```
 
-**중첩된 함수에서 `this`는 머리객체(예: 웹 브라우저의 window 객체)를 가리킨다**
+- Function() 속성과 메소드
+
+  - 속성(예: Function.prototype)
+    - `prototype`
+
+- Function() 객체의 인스턴스 속성과 메소드
+
+  - 인스턴스 속성(예: myFunction.length;)
+    - `arguments`
+      - `arguments.length`: 실제 함수에 전달된 매개변수의 개수
+    - `constructor`
+    - `length`: 함수에서 선언된 매개변수의 개수
+  - 인스턴스 메소드(예: myFunction.toString();)
+    - `apply()`
+    - `call()`
+    - `toString()`
+
+  ```javascript
+  /* 04_Functions.js */
+  // 인스턴스 속성
+  console.log(addNumB.constructor);   // [Function: Function]
+  console.log(addNumB.length);    // 2
+  
+  // 인스턴스 메소드
+  console.log(addNumB.apply(null, [5, 5]));   // 10
+  console.log(addNumB.call(null, 4, 4));      // 8
+  console.log(addNumB.toString());    // addnumB 출력
+  ```
+
+- **함수는 1급 클래스다**
+
+  - 함수는 객체다. 함수는 변수, 객체, 배열에 저장될수 있고, 함수에 전달되고, 함수에서 반환될 수도 있다. 또한 객체이기 때문에 속성도 가지고있다. 
+  - [예시 코드](./problems/04_Function/04_FunctionClass.js)
+
+- 매개변수의 재정의
+
+  - 매개변수는 함수 내부에서 바로 또는 arguments 배열을 사용해서 재정의될 수 있다.
+
+    ```javascript
+    /* 04_FunctionRedefine.js */
+    var foo = false;
+    var bar = false;
+    
+    var myFunction = function (foo, bar) {
+      foo = true;
+      arguments[1] = true;
+      console.log(foo, bar);
+      return;
+    };
+    myFunction(foo, bar);   // true true
+    console.log(foo, bar);  // false false
+    ```
+
+- 함수 호출 패턴
+
+  - 함수 패턴
+
+    ```javascript
+    var myFunc = function () {
+      return "foo";
+    };
+    console.log(myFunc());
+    ```
+
+  - 메소드 패턴
+
+    ```javascript
+    var myObj = {
+      myFunction: function () {
+        return "bar";
+      },
+    };
+    console.log(myObj.myFunction());
+    ```
+
+  - 생성자 패텅
+
+    ```javascript
+    var Dog = function (name, age) {
+      this.name = name;
+      this.age = age;
+    };
+    var dog = new Dog("badook", 2);
+    console.log(dog);
+    ```
+
+  - `apply()`, `call()` 패턴
+
+    ```javascript
+    var greet = {
+      runGreet: function () {
+        console.log(this.name, arguments[0], arguments[1]);
+      },
+    };
+    var cody = { name: "cody" };
+    var lissa = { name: "lissa" };
+    
+    greet.runGreet.apply(cody, ["foo", "bar"]);
+    greet.runGreet.call(lissa, "foo", "bar");
+    ```
+
+- 자기 호출 익명함수
+
+  여러 익명함수를 만든 후 만들자마자 바로 호출하는 코드
+
+  ```javascript
+  (function (msg) {
+    console.log(msg);
+  })("hello!");
+  ```
+
+- 함수의 중첩
+
+  - 함수는 중첩될 수 있고, 중첩 단계에는 제한이 없다.
+
+- 함수 호이스팅
+
+  함수는 함수가 정의되기 전에도 호출할 수있다.
+
+  자바스크립트는 코드를 실행하기 전에 함수 선언문을 먼저 해석하고 먼저 실행 스택/컨텍스트에 추가하기 때문
 
 
 
@@ -255,21 +529,313 @@ console.log(cody.constructor); // 출력: [Function: Person]
 
 자바스크립트는 머리 객체를 만들어 사용자가 정의한 코드를 캡슐화하거나 자바스크립트에 내장된 네이티브 코드를 감싼다. 또한, 자바스크립트는 사용자 정의 코드의 실행 영역을 머리 객체 내부로 제한한다. (웹 브라우저 환경에서는 `window`가 머리/전역 객체이다.)
 
+```javascript
+/* 05_GlobalObject.js */
+var myStringVar = "myStringVar";
+var myFunctionVar = function () {};
+myString = "myString";
+myFunction = function () {};
+console.log("myStringVar" in window); // true
+console.log("myFunctionVar" in window); // true
+console.log("myString" in window); // true
+console.log("myFunction" in window); // true
+```
+
+- 머리 객체에 포함된 전역 함수
+  - `decodeURI()`
+  - `decodeURIComponent()`
+  - `encodeURI()`
+  - `encodeURIComponent()`
+  - `eval()`: 문자로 표현된 js 코드를 실행 (사용X)
+  - `isFinite()`: 주어진 값이 유한수인지 확인
+  - `isNaN()`: NaN 판별
+  - `parseFloat()`: 문자열을 부동소수점 실수로 반환
+  - `parseInt()`: 문자열을 특정 진수의 정수형으로 반환
+  - [예시 코드](./05_HeadGlobalObject/05_GlobalFunction.js)
+
+- 머리 객체 vs 전역 속성, 전역 변수
+
+  - 머리 객체: 모든 객체를 포함하고 있는 객체
+
+  - 전역 속성과 전역 변수는 머리 객체에 직접적으로 포함되어 있는 값을 가리킨다.
+
+    ```javascript
+    var foo = "bar"; // foo는 전역 객체이자 window 머리 객체의 속성
+    var myFunc = function () {
+      var run = (function () {
+        console.log(foo); // 스코프 체인을 통해 머리객체에서 foo를 가져옴
+      })();
+    };
+    myFunc();
+    ```
+
+- 머리 객체 참조하기
+
+  - 전역 스코프에서 `this` 사용
+  - 머리 객체의 이름을 참조 (웹 브라우저에서 `window` 사용)
+
 
 
 ## 6. this 키워드
 
+함수 스코프 안에서 사용할 수 있으며, 함수의 속성 또는 메소드로 포함하고 있는 객체를 참조한다.
 
+- **중첩된 함수에서 `this`는 머리객체(예: 웹 브라우저의 window 객체)를 가리킨다**
+
+  ```javascript
+  /* 06_ThisExample.js */
+  var myObj = {
+    func1: function () {
+      console.log(this);  // func1
+      var func2 = (function () {
+        console.log(this);    // window
+        var func3 = function () {
+          console.log(this);  // window
+        }();
+      })();
+    },
+  };
+  myObj.func1();
+  ```
+
+- **중첩된 함수 문제는 스코프 체인을 사용해서 우회한다**
+
+  스코프 체인을 사용해 부모 함수의 `this`에 대한 참조를 저장해두면 `this` 값이 사라지는 것을 막을 수 있다.
+
+  ```javascript
+  var myObject1 = {
+    myProperty: "my Property",
+    myMethod: function () {
+      var that = this;
+      var helperFunc = (function () {
+        console.log(that.myProperty); // my property
+        console.log(this); // window
+      })();
+    },
+  };
+  
+  myObject1.myMethod();
+  ```
+
+- `call()`, `apply()`을 사용할 경우, 함수 스코프 내에 설정한 `this`의 값을 재정의할 수 있다.
+
+  - `myMethod.call(targetObj, param1, param2, ...)` -> 메소드의 `this`는 targetObj를 가리킨다.
+  - `myMethod.apply(targetObj, [param1, param2, ...])` -> call과 동작은 같으며 차이는 매개변수를 전달하는 방식뿐이다.
+
+- 사용자 정의 생성자 함수 내에서 `this` 키워드 사용하기
+
+  - `new` 키워드를 사용해 함수를 실행할 때, 생성자 함수 내에 코딩된 `this`값은 생성자의 인스턴스를 가리킨다.
+
+  - `new` 키워드를 사용하지 않을 경우, `this`의 값은 함수가 호출된 컨텍스트(=window)가 되었을 것이다.
+
+    ```javascript
+    var Person = function (name) {
+      this.name = name || "jaehyun"; // this는 만들어질 인스턴스를 참조
+    };
+    var jaehyun = new Person("Jaehyun Kim");
+    var person = new Person();
+    
+    console.log(jaehyun.name); // Jaehyun Kim
+    console.log(person.name); // jaehyun
+    
+    var jh = Person("JH Kim"); // jh는 undefined, name값은 window.name에 설정
+    // Uncaught TypeError: Cannot read property "name" of undefined
+    // console.log(jh.name);
+    console.log(window.name); // JH Kim
+    ```
+
+- 프로토타입 메소드 안의 `this`는 생성자 인스턴스를 참조한다.
+
+  ```javascript
+  var Person = function (x) {
+    if (x) {
+      this.fullName = x;
+    }
+  };
+  
+  Person.prototype.getFullName = function () {
+    return this.fullName;
+  };
+  
+  var cody = new Person("cody lindley");  // 상속한 getFullName 메소드를 호출, this는 해당 인스턴스를 참조
+  var lisa = new Person("lissa lindley");
+  
+  console.log(cody.getFullName(), lisa.getFullName());
+  ```
+
+  - `this`가 가리키는 인스턴스나 객체가 참조한 속성을 포함하지 않는다면 프로토타입 체인에서 거슬러 올라가며 속성을 찾는다. 위의 코드에서 인스턴스가 fullName 속성을 포함하지 않을 경우 Person.prototype.fullName 다음에는 Object.prototype.fullName을 확인한다.
 
 
 
 ## 7. 스코프와 클로저
 
-스코프: 코드가 실행되는 컨텍스트로, 전역 스코프(global scope), 지역 스코프(local scope), eval 스코프로 구분된다.
+스코프: 코드가 실행되는 컨텍스트로, 전역 스코프(global scope), 지역 스코프(local scope, ''함수 스코프''라고도 한다. ), eval 스코프로 구분된다.
 
+- ~~자바스크립트에는 블록 스코프가 없다.~~ 
 
+  **함수 스코프: 새로운 함수가 생성될 때 마다 새로운 스코프가 발생한다.
+
+  ```javascript
+  var foo = 1;
+  if (true) {
+    foo = 2;
+    for (var i = 3; i < 5; i++) {
+      foo = i;
+      console.log(foo); // 3  4
+    }
+    console.log(foo); // 4
+    console.log(i); // 5 -> 함수 스코프
+  }
+  console.log(foo); // 4
+  ```
+
+  **블록 스코프: 블록`{}`이 생성될 때 마다 새로운 스코프가 형성되는 것을 의미
+
+  ​	**원래 자바스크립트는 함수 스코프를 따르지만 `const`와 `let` 키워드의 등장으로 블록스코프를 형성하는 것이 가능해졌다.** 	
+
+  ```javascript
+  let bar = 1;
+  if (true) {
+    for (let j = 0; j < 3; j++) {
+      bar = j;
+    }
+    console.log(bar); // 2
+    //   console.log(j);   // j is not defined -> 블록 스코프
+  }
+  ```
+
+  
+
+- `var`를 사용한 스코프 문제 피하기
+
+  - `var` 키워드가 없이 변수를 선언할 경우 전역 스코프에 변수가 추가된다.
+
+    ```javascript
+    // 스코프 문제 피하기
+    var foo = (function () {
+      var boo = (function () {
+        bar = 2;    // 전역 스코프 window.bar로 정의된다.
+      })();
+    })();
+    console.log(bar);   // 전역 스코프의 bar
+    
+    // doo는 boo 함수 스코프에만 존재
+    var foo = (function () {
+      var boo = (function () {
+        var doo = 2;
+      })();
+    })();
+    // console.log(doo);   // doo is not defined
+    ```
+
+    
+
+- **스코프 체인(문법적 스코프)**
+
+  ```javascript
+  var x = 10;
+  var foo = function () {
+    var y = 20;
+    var bar = (function () {
+      var z = 30;
+      console.log(x + y + z); // z 는 지역 스코프에서, x와 y는 스코프 체인에서 찾는다.
+    })();
+  };
+  ```
+
+  **z값은 console.log가 호출되었던 bar 함수의 지역 스코프에서, y값은 bar()의 부모 함수인 foo()에서, x 값은 전역 스코프에서 가져왔다. 
+
+  - 스코프 체인을 검색할 때는 가장 처음 발견한 값을 반환한다.
+
+    ```javascript
+    var a = 1;
+    var boo = function () {
+      var a = 2;
+      var car = (function () {
+        var a = 3;
+        console.log(a); // 3
+      })();
+    };
+    
+    boo();
+    ```
+
+  - 스코프는 함수를 정의할 때 결정된다.
+
+    스코프 체인은 정의할 때, 문자 그대로 코드를 작성할 때 정해진다. 함수를 어느 곳에서 사용해도 스코프 체인은 변하지 않는다.
+
+  - 스코프 체인이 클로저를 만든다.
+
+    **클로저(Closure): 데이터와 데이터를 조작하는 함수를 이어준다.
+
+    ```javascript
+    var countUp = (function () {
+      var count = 0;
+      return function () {
+        return ++count;
+      };
+    })();
+    // countUp 함수를 실행할 대 마다 자신을 포함했던 부모 함수의 스코프에 접근
+    console.log(countUp()); // 1
+    console.log(countUp()); // 2
+    console.log(countUp()); // 3
+    ```
+
+     
 
 ## 8. 함수의 프로토타입
+
+자바스크립트는 Function() 인스턴스에 자동으로 `prototype` 이라는 속성을 만든다. (prototype` 속성은 `new` 키워드와 생성자 함수를 같이 사용해서 만든 객체에 연결된다)
+
+```javascript
+var arr = new Array("foo", "bar");
+console.log(arr.join()); // foo, bar
+```
+
+위의 코드에서 `join()` 메소드는 arr 객체 인스턴스에 정의되어 있지 않지만 사용할 수 있다. 해당 메소드는 `Array()` 생성자의 `prototype` 속성에 속성으로 정의되어 있다. arr 배열 객체 인스턴스에서는 `join()` 메소드가 없기 때문에 프로토타입 체인에서 `join()`이라는 메소드가 있는지 검색한다.
+
+- `prototype` 속성이 중요한 이유
+  - 네이티브 생성자 함수는 `prototype` 속성을 사용해 생성자 인스턴스가 메소드와 속성을 상속받는다.
+  - 사용자 정의 생성자 함수를 만들 때에도 프로토타입 상속을 구현할 수 있다.
+  - 다른 사람이 구현해놓은 코드를 수정하거나 조작할 경우, 어떻게 동작하는지 이해해야 한다.
+  - 동일한 메소드를 공유하는 여러 개의 효율적인 객체 인스턴스를 만들 수 있다.
+
+- 모든 Function() 인스턴스에는 `prototype` 속성이 있다.
+
+- `prototype` 속성은 Object() 객체다.
+
+- 생성자 함수를 통해 만든 인스턴스는 생성자 함수의 `prototype` 속성과 연결되어 있다.
+
+  `new` 키워드와 생성자 함수를 사용해 객체를 만들면 생성자 함수의 `prototype` 속성과 새롭게 만들어진 객체 인스턴스 사이에는 숨겨진 연결 고리가 생긴다.자바스크립트는 인스턴스를 만들 때, 인스턴스 객체와 생성자 함수를 자동으로 연결해두며 이러한 연결 덕분에 프로토타입 체인이 형성된다.
+
+  ```javascript
+  Array.prototype.foo = "foo";
+  
+  var myArray = new Array();
+  console.log(myArray.__proto__.foo)  // myArray.__proto__ == Array.prototype (__proto__를 사용할 수 있는 브라우저에서만 작동)
+  console.log(myArray.constructor.prototype.foo); // foo
+  ```
+
+- 프로토타입 체인의 끝은 Object.prototype이다.
+
+  ```javascript
+  var myArr = [];
+  console.log(myArray.foo);
+  /* myArr.foo, Array.prototype.foo, Object.prototype.foo 에서 foo를 찾지 못해 undefined가 출력된다. */
+  ```
+
+- 프로토타입 체인은 체인에서 제일 먼저 찾은 속성을 반환한다.
+
+  ```javascript
+  Array.prototype.foo = "foo";
+  Object.prototype.foo = "bar";
+  var myArray = new Array();
+  console.log(myArray.foo);   // foo > Array.prototype 에서 찾은 foo 출력
+  ```
+
+- `prototype` 속성을 새 객체로 대체하면 기본 `constructor` 속성이 삭제된다.
+
+
 
 
 

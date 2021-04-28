@@ -1,7 +1,8 @@
 String.augmentedProperties = [];
 
 if (!String.prototype.trimIT) {
-  String.prototype.trimIT = function () {   // trimIT 함수 추가
+  String.prototype.trimIT = function () {
+    // trimIT 함수 추가
     return this.replace(/^\s+|\s+$/g, "");
   };
   String.augmentedProperties.push("trimIT");

@@ -21,7 +21,18 @@ var myDate = new Date();
 var myRegExp = new RegExp("\\bt[a-z]+\\b");
 var myError = new Error("crap!");
 
-console.log(typeof myNumber, typeof myString, typeof myBoolean, typeof myObject);
-console.log(typeof myArray, typeof myFunction, typeof myDate, typeof myRegExp, typeof myError);
+console.log(
+  typeof myNumber,
+  typeof myString,
+  typeof myBoolean,
+  typeof myObject
+);
+console.log(
+  typeof myArray,
+  typeof myFunction,
+  typeof myDate,
+  typeof myRegExp,
+  typeof myError
+);
 
 // typeof는 함수 객체와 RegExp() 객체에 대해서는 항상 function을 반환한다.

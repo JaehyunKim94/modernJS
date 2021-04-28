@@ -14,7 +14,9 @@ var myArray = new Array("foo", "bar");
 var myArrayLiteral = ["foo", "bar"];
 
 var myFunction = new Function("x", "y", "return x*y");
-var myFunctionLiteral = function(x, y) {return x*y};
+var myFunctionLiteral = function (x, y) {
+  return x * y;
+};
 
 var myDate = new Date();
 
