@@ -20,9 +20,8 @@ for (var key in mocha) {
 console.log("***********************************");
 console.log();
 
-// 프로토타입 상속 1, 2
+// 상속 1, 2
 var TrainedDog = function (teacher, gender, name, age) {
-  this.__proto__ = new Dog(gender, name, age); // 프로토타입 설정방법 1
   //   Dog.call(this, gender, name, age); // 프로토타입 설정방법 2
 
   this.teacher = teacher;
@@ -50,7 +49,7 @@ for (var key in cookie) {
 console.log("***********************************");
 console.log();
 
-// 프로토타입 상속 3
+// 상속 3
 var TrainingdDog = function (teacher) {
   this.teacher = teacher;
   this.sitdown = function () {

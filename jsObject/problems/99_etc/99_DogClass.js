@@ -5,10 +5,25 @@ class Dog {
     this.cute = true;
   }
   bark() {
-    console.log("월월");
+    return "월월";
   }
 }
 
-let milk = new Dog("male", 3);
-let mocha = new Dog("male", 1);
-let danchu = new Dog("female", 2);
+class TrainedDog extends Dog {
+  constructor(gender, age, teacher) {
+    super(gender, age);
+    this.teacheer = teacher;
+  }
+  wait() {
+    return "기다려";
+  }
+  sitdown() {
+    return "앉아";
+  }
+}
+
+let latte = new TrainedDog("female", 2, "kang");
+console.log(latte.bark());
+console.log(latte.cute);
+console.log(TrainedDog.prototype.constructor);
+console.log(TrainedDog.prototype.__proto__);
