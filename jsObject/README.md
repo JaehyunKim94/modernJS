@@ -90,7 +90,7 @@ console.log(cody.constructor); // 출력: [Function: Person]
 
   - ex) 5, 'foo', `true`, `false`, `null`, `undefined`
 
-  - **리터럴 문법을 사용해서 값을 만들 때와는 달리 String(), Number(), Boolean() 값은 `new` 키워드를 사용해 만들며, 이렇게 만들어진 객체는 복합 객체이다.**
+  - **리터럴 문법을 사용해서 값을 만들 때와는 달리 `String()`, `Number()`, `Boolean()` 값은 `new` 키워드를 사용해 만들며, 이렇게 만들어진 객체는 복합 객체이다.**
 
   - **원시값은 액면가 그대로 저장되고, 관리된다.** 
 
@@ -246,10 +246,10 @@ console.log(cody.constructor); // 출력: [Function: Person]
     console.log(myString.prop, myBoolean.prop, myNumber.prop);  // undefined undefined undefined
     ```
 
-**자바스크립트 객체와 Object() 객체의 의미
+**자바스크립트 객체와 `Object()` 객체의 의미
 
 - 자바스크립트 객체: 자바스크립트의 모든 객체
-- Object() 객체: 객체의 한 종류
+- `Object()` 객체: 객체의 한 종류
 
 
 
@@ -257,9 +257,9 @@ console.log(cody.constructor); // 출력: [Function: Person]
 
 - 자바스크립트는 수정 가능하다. 네이티브 객체이든 사용자가 정의한 객체이든 객체의 언제든 객체의 속성을 조작할 수 있다.
 - 객체의 속성을 가져오고, 설정하고, 객신할 때는 점 표기법(dot notation) 또는 각괄호 표기법(bracket notation)을 사용한다.
-  - 점 표기법: ObjectName.property
+  - 점 표기법: `ObjectName.property`
     - 가장 널리 사용되는 방법으로, 필요한 경우를 제외하고는 점 표기법이 사용된다.
-  - 각괄호 표기법: ObjectName['property']
+  - 각괄호 표기법: `ObjectName['property']`
     - 각괄호 표기법을 사용하면 자바스크립트 식별자로 사용할 수 없는 속성 이름도 사용할 수 있다. 
 - 객체 속성 삭제하기 `delete`
   - 속성을 제거하는 유일한 방법으로, 프로토타입 체인에 있는 속성을 제거하지는 않는다.
@@ -300,7 +300,7 @@ console.log("123" in cody); // false
     ```
 
     - `join()` 메소드는 myArray의 것이 아니지만 myArray의 속성인 것 처럼 접속할 수 있다. >> **프로토타입 체인의 동작**
-    - prototype 속성은 모두 객체이며 프로토타입 체인의 종점은 Object.prototype이다. 
+    - `prototype` 속성은 모두 객체이며 프로토타입 체인의 종점은 `Object.prototype`이다. 
 
 - 객체의 속성 확인하기: `hasOwnProperty`& `in`
 
@@ -345,13 +345,14 @@ console.log("123" in cody); // false
 
 ## 3. Object()
 
-내장 Object() 생성자 함수를 사용하면 범용 빈 객체를 바로 만들 수 있다.
+내장 `Object()` 생성자 함수를 사용하면 범용 빈 객체를 바로 만들 수 있다.
 
-- Object()의 속성과 메소드
+- `Object()`의 속성과 메소드
+  
   - 속성 (예: `Object.prototype`)
-    - `prototype`
-
-- Object() 객체 인스턴스의 속성과 메소드
+  - `prototype`
+  
+- `Object()` 객체 인스턴스의 속성과 메소드
 
   - 인스턴스 속성(예: `var myObj = {}; myObj.constructor`)
     - `constructor`
@@ -363,7 +364,7 @@ console.log("123" in cody); // false
     - `toString()`
     - `valueOf()`
 
-- Object() 객체 생성
+- `Object()` 객체 생성
 
   - 객체 리터럴을 사용한 Object 객체 생성
 
@@ -376,7 +377,7 @@ console.log("123" in cody); // false
     };
     ```
 
-- **모든 객체는 Object.prototype을 상속받는다**
+- **모든 객체는 `Object.prototype`을 상속받는다**
 
   ```javascript
   /* 03_ObjectPropertyMethod.js */
@@ -402,19 +403,19 @@ var addNumB = function (num1, num2) {
 console.log(addNumB(3, 3));
 ```
 
-- Function() 속성과 메소드
+- `Function()` 속성과 메소드
 
-  - 속성(예: Function.prototype)
+  - 속성(예: `Function.prototype`)
     - `prototype`
 
-- Function() 객체의 인스턴스 속성과 메소드
+- `Function()` 객체의 인스턴스 속성과 메소드
 
-  - 인스턴스 속성(예: myFunction.length;)
+  - 인스턴스 속성(예: `myFunction.length;`)
     - `arguments`
       - `arguments.length`: 실제 함수에 전달된 매개변수의 개수
     - `constructor`
     - `length`: 함수에서 선언된 매개변수의 개수
-  - 인스턴스 메소드(예: myFunction.toString();)
+  - 인스턴스 메소드(예: `myFunction.toString();`)
     - `apply()`
     - `call()`
     - `toString()`
@@ -438,7 +439,7 @@ console.log(addNumB(3, 3));
 
 - 매개변수의 재정의
 
-  - 매개변수는 함수 내부에서 바로 또는 arguments 배열을 사용해서 재정의될 수 있다.
+  - 매개변수는 함수 내부에서 바로 또는 `arguments` 배열을 사용해서 재정의될 수 있다.
 
     ```javascript
     /* 04_FunctionRedefine.js */
@@ -663,7 +664,7 @@ console.log("myFunction" in window); // true
   console.log(cody.getFullName(), lisa.getFullName());
   ```
 
-  - `this`가 가리키는 인스턴스나 객체가 참조한 속성을 포함하지 않는다면 프로토타입 체인에서 거슬러 올라가며 속성을 찾는다. 위의 코드에서 인스턴스가 fullName 속성을 포함하지 않을 경우 Person.prototype.fullName 다음에는 Object.prototype.fullName을 확인한다.
+  - `this`가 가리키는 인스턴스나 객체가 참조한 속성을 포함하지 않는다면 프로토타입 체인에서 거슬러 올라가며 속성을 찾는다. 위의 코드에서 인스턴스가 `fullName` 속성을 포함하지 않을 경우 `Person.prototype.fullName` 다음에는 `Object.prototype.fullName`을 확인한다.
 
 
 
@@ -743,7 +744,7 @@ console.log("myFunction" in window); // true
   };
   ```
 
-  **z값은 console.log가 호출되었던 bar 함수의 지역 스코프에서, y값은 bar()의 부모 함수인 foo()에서, x 값은 전역 스코프에서 가져왔다. 
+  **z값은 `console.log`가 호출되었던 bar 함수의 지역 스코프에서, y값은 `bar()`의 부모 함수인 `foo()`에서, x 값은 전역 스코프에서 가져왔다. 
 
   - 스코프 체인을 검색할 때는 가장 처음 발견한 값을 반환한다.
 
@@ -785,7 +786,7 @@ console.log("myFunction" in window); // true
 
 ## 8. 함수의 프로토타입
 
-자바스크립트는 Function() 인스턴스에 자동으로 `prototype` 이라는 속성을 만든다. (prototype` 속성은 `new` 키워드와 생성자 함수를 같이 사용해서 만든 객체에 연결된다)
+자바스크립트는 Function() 인스턴스에 자동으로 `prototype` 이라는 속성을 만든다. (`prototype` 속성은 `new` 키워드와 생성자 함수를 같이 사용해서 만든 객체에 연결된다)
 
 ```javascript
 var arr = new Array("foo", "bar");
@@ -800,7 +801,7 @@ console.log(arr.join()); // foo, bar
   - 다른 사람이 구현해놓은 코드를 수정하거나 조작할 경우, 어떻게 동작하는지 이해해야 한다.
   - 동일한 메소드를 공유하는 여러 개의 효율적인 객체 인스턴스를 만들 수 있다.
 
-- 모든 Function() 인스턴스에는 `prototype` 속성이 있다.
+- 모든 `Function()` 인스턴스에는 `prototype` 속성이 있다.
 
 - `prototype` 속성은 Object() 객체다.
 
@@ -816,7 +817,7 @@ console.log(arr.join()); // foo, bar
   console.log(myArray.constructor.prototype.foo); // foo
   ```
 
-- 프로토타입 체인의 끝은 Object.prototype이다.
+- 프로토타입 체인의 끝은 `Object.prototype`이다.
 
   ```javascript
   var myArr = [];
@@ -835,27 +836,216 @@ console.log(arr.join()); // foo, bar
 
 - `prototype` 속성을 새 객체로 대체하면 기본 `constructor` 속성이 삭제된다.
 
+  - 자바스크립트의 기본 `prototype` 속성을 대체할 생각이라면 생성자 함수를 참조하는 `constructor` 속성을 원래대로 복원해주어야 한다.
 
+    ```javascript
+    // prototype의 기본 속성을 바꿀 경우
+    var Foo = function () {};
+    Foo.prototype = {};
+    var FooInstance = new Foo();
+    
+    console.log(FooInstance.constructor === Foo); // false
+    console.log(FooInstance.constructor); // [Function: Object]
+    
+    // prototype 값을 대체하지 않은 경우
+    var Bar = function () {};
+    var BarInstance = new Bar();
+    
+    console.log(BarInstance.constructor === Bar); // true
+    console.log(BarInstance.constructor); // [Function: Bar]
+    
+    // constructor 속성이 원래 생성자 함수를 올바르게 참조하게 수정
+    var Boo = function Boo() {};
+    Boo.prototype = { constructor: Boo };
+    var BooInstance = new Boo();
+    
+    console.log(BooInstance.constructor === Boo); // true
+    console.log(BooInstance.constructor); // [Function: Boo]
+    ```
 
+- 프로토타입에서 상속한 속성은 가장 최근의 값을 사용한다.
 
+- `prototype` 속성을 새 객체로 대체하면 이전에 만든 인스턴스는 갱신되지 않는다.
 
+  ```javascript
+  var Foo = function () {};
+  Foo.prototype.x = 1;
+  
+  var FooInstance = new Foo();
+  console.log(FooInstance.x); // 1
+  
+  // prototype의 속성을 갱신
+  Foo.prototype.x = 2;
+  console.log(FooInstance.x); // 2
+  
+  // prototype 속성을 새 객체로 대체
+  Foo.prototype = { x: 3 };
+  console.log(FooInstance.x); // 2 -> 이전에 만든 인스턴스는 갱신되지 않음
+  
+  var NewFooInstance = new Foo();
+  console.log(NewFooInstance.x); // 3 -> 새로 만든 인스턴스는 새로운 prototype 적용
+  ```
 
+- 사용자 정의 생성자도 네이티브 생성자처럼 프로토타입을 상속할 수 있다.
+
+  ```javascript
+  // 사용자 정의 생성자의 프로토타입 상속
+  var Person = function () {};
+  // 모든 Person 인스턴스는 legs, arms, countLimbs를 상속한다.
+  Person.prototype.legs = 2;
+  Person.prototype.arms = 2;
+  Person.prototype.countLimbs = function () {
+    return this.legs + this.arms;
+  };
+  
+  var chuck = new Person();
+  console.log(chuck.countLimbs()); // 4
+  
+  // 전달된 매개변수가 없을 때, 프로토 타입에서 속성을 상속받는 생성자 함수
+  var Monkey = function (legs, arms) {
+    // 프로토타입에서 상속받은 값을 가린다
+    if (legs !== undefined) {
+      this.legs = legs;
+    }
+    if (arms !== undefined) {
+      this.arms = arms;
+    }
+  };
+  
+  Monkey.prototype.legs = 2;
+  Monkey.prototype.arms = 2;
+  Monkey.prototype.countLimbs = function () {
+    return this.legs + this.arms;
+  };
+  
+  var okong = new Monkey(0, 0);
+  console.log(okong.countLimbs()); // 0
+  
+  ```
+
+- 상속 체인 만들기
+
+  ```javascript
+  var Person = function () {
+    this.legs = 2;
+  };
+  Person.prototype.arms = 2;
+  
+  var Chef = function () {
+    this.skill = "cook";
+  };
+  Chef.prototype = new Person();
+  var cody = new Chef();
+  
+  console.log(cody.skill); // cook
+  console.log(cody.arms); // 2
+  console.log(cody.legs); // 2
+  ```
+
+  
 
 ## 9. Array()
 
 값을 순서대로 나열한 목록으로, 일반적으로는 0부터 시작하는 숫자 색인값을 통해 포함된 값을 훑을 목적으로 사용한다.
 
+```javascript
+var Arr1 = ["red", "orange", "yellow"];
+var Arr2 = new Array("green", "blue");
+var Arr3 = new Array(5); // 크기가 5인 배열 생성
 
+console.log(Arr1); // [ 'red', 'orange', 'yellow' ]
+console.log(Arr2); // [ 'green', 'blue' ]
+console.log(Arr3); // [ <5 empty items> ]
+
+console.log(Arr1[0], Arr2[1], Arr3[2]);   // red blue undefined
+```
+
+- 배열의 크기를 설정하면 값을 추가하거나 제거할 수 있다.
+
+  ```javascript
+  var Arr1 = ["red", "orange", "yellow"];
+  Arr1[5] = "navy"; // 5번 색인까지 값을 만들고, 넣는다.
+  console.log(Arr1, Arr1.length); // [ 'red', 'orange', 'yellow', <2 empty items>, 'navy' ] 6
+  Arr1.length = 10; // 배열의 크기 설정 (설정한 길이만큼 요소 생성)
+  console.log(Arr1, Arr1.length); // [ 'red', 'orange', 'yellow', <2 empty items>, 'navy', <4 empty items> ] 10
+  Arr1.length = 2; // 배열의 크기 설정 (설정한 길이만큼 남기고 제거)
+  console.log(Arr1, Arr1.length); // [ 'red', 'orange' ] 2
+  ```
+
+- 다중 배열
+
+  각괄호 표기법을 사용해서 다중 배열에 접근
+
+  ```javascript
+  var myArr = [[[[1, 2], 3, 4], 5, 6], 7, 8];
+  console.log( myArr[0][0][0][0]); // 1
+  ```
+
+- 배열 조회
+
+  - `while` , `for` 반복문 사용
+
+    ```javascript
+    var myArr = ["red", "orange", "yellow", "green"];
+    var myArrLength = myArr.length;
+    var counter = 0;
+    
+    // while문 처음부터 끝까지 조회
+    while (counter < myArrLength) {
+      console.log(myArr[counter]);
+      counter++;
+    }
+    
+    // while문 끝부터 처음까지 조회
+    while (myArrLength--) {
+      console.log(myArr[myArrLength]);
+    }
+    
+    // for문 조회
+    for (var i in myArr) {
+      console.log(myArr[i]);
+    }
+    ```
+
+    
 
 ## 10. String()
 
 문자열 객체와 문자열 원시값을 만들 때 사용한다.
 
+```javascript
+var strObj = new String("kim"); // 문자열 객체 생성
+console.log(strObj); // [String: 'kim']
+console.log(typeof strObj); // object
+
+var strObjNoNew = String("kim"); // new 사용하지 않음 (리터럴/원시문자 생성)
+console.log(strObjNoNew); // kim
+console.log(typeof strObjNoNew); // string
+
+var strLiteral = "kim"; // 리터럴/원시문자 생성
+console.log(strLiteral); // kim
+console.log(typeof strLiteral); // string
+```
+
 
 
 ## 11. Number()
 
-숫자 객체와 숫자 원시값을 만들 때 사용한다.
+숫자 객체와 숫자 원시값을 만들 때 사용한다. 일반적으로 정수 또는 실수로 작성된다.
+
+```javascript
+var numObject = new Number(10);
+console.log(numObject); // [Number: 10]
+console.log(typeof numObject); // object
+
+var numObjectNoNew = Number(20);
+console.log(numObjectNoNew); // 20
+console.log(typeof numObjectNoNew); // number
+
+var numLiteral = 30;
+console.log(numLiteral); // 30
+console.log(typeof numLiteral); // number
+```
 
 
 
@@ -863,17 +1053,56 @@ console.log(arr.join()); // foo, bar
 
 불리언값 객체를 만들 때 사용한다.
 
+- `Boolean()` 매게 변수
+
+  0, -0, null, false, NaN, undefined, 빈문자열("") 은 `false`, 나머지는 `true` 
+
+```javascript
+// 복합 객체
+var myBool1 = new Boolean(false);
+console.log(myBool1); // [Boolean: false]
+console.log(typeof myBool1); // object
+
+if (myBool1) {
+  console.log("false 복합 객체는 true이다.");
+}
+
+// 리터럴/원시값
+var myBool2 = Boolean(false);
+console.log(myBool2); // false
+console.log(typeof myBool2); // boolean
+
+// 리터럴/원시값
+var myBool3 = false;
+console.log(myBool3); // false
+console.log(typeof myBool3); // boolean
+
+// 0, -0, null, false, NaN, undefined, 빈문자열("") 은 false
+var myBool4 = Boolean(undefined);
+console.log(myBool4); // false
+
+// 나머지는 true
+var myBool5 = Boolean(Math);
+console.log(myBool5); // true
+```
+
 
 
 ## 13. 원시 문자열, 숫자, 불리언값 다루기
 
+- **원시/리터럴 값은 속성에 접근할 때 객체로 변환된다.**
 
+  메소드/속성에 접근하면 자바스크립트는 먼저 리터럴값에 해당하는 래퍼(wrapper) 객체를 만들고 이를 통해 메소드나 속성에 접근한다. 이후, 래퍼 객체를 제거하고, 다시 값을 리터럴형으로 되돌린다.
+
+- 평소에는 원시 문자열, 숫자, 불리언 값을 사용하자
 
 
 
 ## 14. Null
 
 객체 속성이 아무런 값도 가지고 있지 않음을 명시적으로 나타낼 때 사용한다.
+
+**typeof null == "object"
 
 
 
@@ -912,11 +1141,29 @@ console.log(type of foo.bar);
 
 - 객체는 값을 저장하는, 이름이 붙은 속성으로 구성된다.
 - 자바스크립트에서 거의 모든 것들은 객체와 같이 동작한다.
-- 객체는 new 키워드와 함께 생성자 함수를 호출하여 만들거나 리터럴 이라는 약식 표현을 사용해서 만든다.
-- 생성자 함수는 객체이다. 
-- 자바스크립트에는 총 9개의 내장 생성자 함수가 있다. 
-
-
+- 객체는 `new` 키워드와 함께 생성자 함수를 호출하여 만들거나 리터럴 이라는 약식 표현을 사용해서 만든다.
+- 생성자 함수는 객체이다. (객체가 객체를 만드는 자바스크립트)
+- 자바스크립트에는 총 9개의 내장 생성자 함수가 있다. (`Object()`, `String()`, `Number()` 등등...), `String()`, `Number()`, `Boolean()` 생성자는 원시값을 만들거나 필요한 경우, 객체 래퍼를 제공하는 경우 두가지 용도로 사용되며, 이로 인해 원시값이 객체처럼 동작할 수 있게 된다.
+- 내장 생성자 함수를 `new` 키워드와 함께 사용하면 '복합 객체' 또는 '참조 객체'라 부르는 객체를 만든다.
+- 원시값은 값으로 저장되고, 복사하면 문자 그대로 복사가 된다. 하지만 복합 객체는 참조가 저장되고 복사하면 참조만 복사된다.
+- 원시값은 값을 비교할 때 값이 같은지 비교하고, 복합 객체는 참조가 같은지 비교한다.
+- 복합 객체와 참조의 특성으로 자바스크립트에서 객체는 동적 속성을 갖는다.
+- 자바스크립트의 네이티브 객체, 사용자 정의 객체 등의 모든 객체의 속성을 조작할 수 있다.
+- 객체의 속성을 가져오거나 설정할 때에는 점 표기법이나 각괄호 표기법을 사용한다.
+- 객체의 속성을 참조하면 해당 객체에 속성이 참조되어있는지 확인하고, 그렇지 않을 경우 `prototype` 속성을 찾는다. `prototype`에도 없을 경우 `Object()` 생성자의 `prototype` 속성에서 찾고, 여기서도 없을 경우에 `undefined`라고 판단한다.
+- 자바스크립트에서는 프로토타입 체인 검색을 사용해서 상속을 구현한다. (프로토타입 상속)
+- `prototype`의 속성은 `Object()` 객체이고, 모든 객체는 `Object()`를 상속받는다.
+- 자바스크립트 함수는 1급 객체다. 함수는 속성과 값을 지닌 객체다.
+- 함수 안에서 사용하는 `this` 키워드는 함수를 포함한 객체를 참조한다.
+- `this`는 함수가 호출되는 컨텍스트에 따라 결정된다.
+- `this` 키워드를 전역 스코프에서 사용하면 `this`는 전역 객체(또는 머리 객체)를 참조한다.
+- 자바스크립트에서는 고유한 스코프를 만들기 위해 함수를 사용한다.
+- 자바스크립트에는 자바스크립트 코드를 모두 담아두는 전역 스코프가 있다.
+- 함수는 스코프 체인을 통해 변수를 찾는다.
+- 스코프 체인은 코드가 작성된 위치에 따라 만들어지기 대문에 호출된 컨텍스트에는 영향을 받지 않는다.
+- 함수 내에서 `var`를 사용하지 않고 선언된 변수와 함수 표현식은 전역 속성이 된다.
+- 전역 스코프에서 (`var` 없이 ) 선언된 변수와 함수는 전역 객체(또는 머리 객체)의 속성이 된다.
+- 전역 스코프에서 (` var`와 함께) 선언된 변수와 함수는 전역 변수가 된다.
 
 
 
@@ -929,7 +1176,7 @@ console.log(type of foo.bar);
 
 
 
-##### `call()`, `apply()` (p.84)
+##### `call()`  vs `apply()`
 
 - 함수에 매개변수를 전달하는 방식에 차이가 있다.
   - `call(func, param1, param2)`
