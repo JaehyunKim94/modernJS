@@ -1184,3 +1184,12 @@ console.log(type of foo.bar);
 
 
 
+## 추가로 학습해야할 사항
+
+- Class (ES6부터 등장)
+  - 다른 언어처럼 private 속성은 어떻게 쓰는지(# 사용)
+- call, bind, apply (스코프 개념쪽으로)
+- 클로저의 의미
+  - 변수의 라이프 사이클
+  - 닫아준다는 의미?
+- var let const 의 차이와 스코프의 이해
