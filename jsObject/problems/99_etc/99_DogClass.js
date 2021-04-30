@@ -12,7 +12,7 @@ class Dog {
 class TrainedDog extends Dog {
   constructor(gender, age, teacher) {
     super(gender, age);
-    this.teacheer = teacher;
+    this.teacher = teacher;
   }
   wait() {
     return "기다려";
@@ -22,8 +22,8 @@ class TrainedDog extends Dog {
   }
 }
 
+let wooyoo = new Dog("female", 2);
+console.log(wooyoo);
 let latte = new TrainedDog("female", 2, "kang");
-console.log(latte.bark());
-console.log(latte.cute);
-console.log(TrainedDog.prototype.constructor);
-console.log(TrainedDog.prototype.__proto__);
+console.log(latte);
+console.log(TrainedDog.prototype);
